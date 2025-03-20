@@ -8,8 +8,8 @@ const Logo = () => {
   return (
     
           <div className={styles.logo}>
-          <img src={logo} alt="logo" />
-          <p> <strong>27L</strong> Books</p>
+          <img src={logo} alt="logo" className={styles.logo_img} />
+          <p> <strong>Alura</strong>Books</p>
           </div>
    
   )
