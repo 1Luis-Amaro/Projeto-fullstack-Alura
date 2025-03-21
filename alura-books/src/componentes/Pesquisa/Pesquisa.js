@@ -32,7 +32,7 @@ const Pesquisa = () => {
       <Titulo> Já sabe por onde começar? </Titulo>
       <Subtitulo>Encontre seu livro em nossa estante</Subtitulo>
       <Input placeholder="Escreva sua próxima leitura"
-             onBlur={e =>  setTextoDigitado(e.target.value)} 
+             onChanged={e =>  setTextoDigitado(e.target.value)} 
        />
        <p> {textoDigitado} </p>
     </PesquisaContainer>
