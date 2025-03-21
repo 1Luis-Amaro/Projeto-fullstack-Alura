@@ -1,18 +1,27 @@
-import React from 'react'
-import logo from "../../imagens/logo.svg"
+import React from "react";
+import logo from "../../imagens/logo.svg";
 
-//CSS 
-import styles from './Logo.module.css'
+//CSS
+import styled from "styled-components";
+
+const LogoContainer = styled.div`
+  display: flex;
+  font-size: 2em;
+`;
+
+const LogoImg = styled.img`
+  margin-right: 0.5em;
+`;
 
 const Logo = () => {
   return (
-    
-          <div className={styles.logo}>
-          <img src={logo} alt="logo" className={styles.logo_img} />
-          <p> <strong>Alura</strong>Books</p>
-          </div>
-   
-  )
-}
+    <LogoContainer>
+      <LogoImg src={logo} alt="logo" />
+      <p>
+        <strong>Alura</strong>Books
+      </p>
+    </LogoContainer>
+  );
+};
 
-export default Logo
+export default Logo;

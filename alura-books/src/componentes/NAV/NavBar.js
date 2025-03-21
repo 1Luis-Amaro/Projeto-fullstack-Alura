@@ -2,28 +2,51 @@ import React from 'react'
 import styles from './NavBar.module.css'
 import { BsBasket } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
+import styled from 'styled-components'
+
+const Container = styled.div `
+    display: flex;
+`
+
+const Nav = styled.ul `
+    display: flex;
+`
+
+const Lista = styled.li`
+    font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 5px;
+  cursor: pointer;
+  min-width: 120px;
+`
+
+const LogoContainer = styled.div `
+    padding: 35px;
+`
 
 
+const NavBar = () => {
+    const textoOpcoes = ['CATEGORIAS', 'MINHA ESTANTE', 'FAVORITOS'] 
 
-const NavBar = (textoOpcoes) => {
-
-     textoOpcoes = ['CATEGORIAS', 'MINHA ESTANTE', 'FAVORITOS']
-    
   return (
-        <div className={styles.container} >
-        <ul className={styles.opcoes} >
+        <Container>
+        <Nav>
             {textoOpcoes.map((texto) => (
-                <li className={styles.lista}> 
+                <Lista> 
                     <p>{texto} </p> 
-                </li>
+                </Lista>
         ))}
-        </ul>
-        <div className={styles.logoContainer} >  
+        </Nav>
+        <LogoContainer >  
                 <FaRegUserCircle className={styles.logo}  />
                 <BsBasket className={styles.logo} />
-        </div>
+        </LogoContainer>
         
-        </div>
+        </Container>
 
     
         
