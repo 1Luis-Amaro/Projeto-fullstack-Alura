@@ -1,13 +1,17 @@
 import './App.css';
 import Logo from './componentes/Logo/Logo';
-import './componentes/Logo/Logo.module.css'
+import NavBar from './componentes/NAV/NavBar';
+import perfil from './imagens/perfil.svg'
+import sacola from './imagens/sacola.svg'
 
+const icones = [perfil, sacola]
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <Logo/>
+        <NavBar/>
       </header>
     </div>
   );
