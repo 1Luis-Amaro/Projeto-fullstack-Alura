@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Input from "../Input/Input";
 import {useState} from 'react'
 import { livros } from "./DadosPesquisas";
-
+import styles from './Pesquisa.module.css'
 
 const PesquisaContainer = styled.section`
   background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
@@ -42,7 +42,12 @@ const Pesquisa = () => {
                 setLivrosPesquisados(resultadoPesquisa)
              }} 
        />
-      
+      {livrosPesquisados.map((livro) => (
+        <div className={styles.livro} >
+            <img  className={styles.livroimg} src={livro.src}/>
+            <p className={styles.livrop} > {livro.nome} </p>
+        </div>
+      ))}
     </PesquisaContainer>
   );
 };
