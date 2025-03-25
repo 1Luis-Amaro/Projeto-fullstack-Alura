@@ -1,8 +1,10 @@
 import React from "react";
 import { livros } from "./DadosUltimosLancamentos";
+import  livro2 from '../../imagens/livro2.png'
 import styles from "./UltimosLancamentos.module.css";
 import { Titulo } from "../Titulo/Titulo";
 import styled from "styled-components";
+import CardRecomenda from "../CardRecomenda/CardRecomenda";
 
 const Container = styled.section`
   background-color: rgb(230, 230, 230);
@@ -34,7 +36,15 @@ const UltimosLancamentos = () => {
       {livros.map((livro) => (
         <NovosLivros src={livro.src} />
       ))}
+    <CardRecomenda 
+        titulo="Talvez você se interesse por"
+        subtitulo="Angular 11"
+        descricao="Construindo uma aplicação com a plataforma Google"
+        img={livro2 }
+    />
     </Container>
+
+
   );
 };
 
