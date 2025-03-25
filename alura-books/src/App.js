@@ -2,12 +2,15 @@
 import { Header } from './componentes/Header/Header';
 import styled from 'styled-components'
 import Pesquisa from './componentes/Pesquisa/Pesquisa';
+import UltimosLancamentos from './componentes/UltimosLancamentos/UltimosLancamentos';
 
 //compoenentizando o css
 const AppContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(90deg, #002f52 35%, #326589 165%)
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
+    overflow: auto;
+    
 `
 
 function App() {
@@ -15,7 +18,7 @@ function App() {
     <AppContainer>
       <Header/>
       <Pesquisa/>
-
+      <UltimosLancamentos/>
     </AppContainer>
   );
 }

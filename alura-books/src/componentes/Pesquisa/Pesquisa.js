@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Input from "../Input/Input";
-import {useState} from 'react'
+import { useState } from "react";
 import { livros } from "./DadosPesquisas";
-import styles from './Pesquisa.module.css'
 
 const PesquisaContainer = styled.section`
   background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
@@ -26,28 +25,66 @@ const Subtitulo = styled.h3`
   margin-bottom: 40px;
 `;
 
-const Pesquisa = () => {
-    const [livrosPesquisados, setLivrosPesquisados] = useState([])
+/* Flexbox para organizar os livros horizontalmente */
+const ResultadoContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;  /* Faz os itens quebrarem para a próxima linha */
+  justify-content: center;
+  gap: 20px; /* Espaçamento entre os itens */
+  margin-top: 20px;
+`;
 
-    console.log(livrosPesquisados)
+const Livro = styled.div`
+  display: flex;
+  flex-direction: column; /* Mantém imagem e nome empilhados */
+  align-items: center;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+
+  img {
+    width: 100px;
+  }
+
+  &:hover {
+    border: 1px solid white;
+  }
+`;
+
+const Pesquisa = () => {
+  const [livrosPesquisados, setLivrosPesquisados] = useState([]);
 
   return (
     <PesquisaContainer>
       <Titulo> Já sabe por onde começar? </Titulo>
       <Subtitulo>Encontre seu livro em nossa estante</Subtitulo>
-      <Input placeholder="Escreva sua próxima leitura"
-             onChange={e =>  {
-                const textoDigitado = e.target.value
-                const resultadoPesquisa = livros.filter(livro => livro.nome.includes(textoDigitado))
-                setLivrosPesquisados(resultadoPesquisa)
-             }} 
-       />
-      {livrosPesquisados.map((livro) => (
-        <div className={styles.livro} >
-            <img  className={styles.livroimg} src={livro.src}/>
-            <p className={styles.livrop} > {livro.nome} </p>
-        </div>
-      ))}
+      <Input
+        placeholder="Escreva sua próxima leitura"
+        onChange={(e) => {
+          const textoDigitado = e.target.value;
+          if (textoDigitado === "" ) {
+            setLivrosPesquisados([])
+          }else {
+
+              const resultadoPesquisa = livros.filter((livro) =>
+                livro.nome.toLowerCase().includes(textoDigitado.toLowerCase())
+              );
+              setLivrosPesquisados(resultadoPesquisa);
+            }
+        }}
+      />
+      
+      {/* Exibe os resultados somente se houver livros pesquisados */}
+      {livrosPesquisados.length > 0 && (
+        <ResultadoContainer>
+          {livrosPesquisados.map((livro) => (
+            <Livro key={livro.nome}>
+              <img src={livro.src} alt={livro.nome} />
+              <p>{livro.nome}</p>
+            </Livro>
+          ))}
+        </ResultadoContainer>
+      )}
     </PesquisaContainer>
   );
 };
