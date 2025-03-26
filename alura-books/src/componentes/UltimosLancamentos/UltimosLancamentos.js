@@ -1,7 +1,6 @@
 import React from "react";
 import { livros } from "./DadosUltimosLancamentos";
 import  livro2 from '../../imagens/livro2.png'
-import styles from "./UltimosLancamentos.module.css";
 import { Titulo } from "../Titulo/Titulo";
 import styled from "styled-components";
 import CardRecomenda from "../CardRecomenda/CardRecomenda";
@@ -13,20 +12,21 @@ const Container = styled.section`
   justify-content: center;
   padding-bottom: 10px;
   gap: 10px; /* Espaço entre os livros */
+  padding-bottom: 30px
 `;
 
 const NovosLivros = styled.img`
     padding-top: 30px;
-    width: 200px;
+    width: 230px;
     height: auto;
     text-align: center;
-    padding-bottom: 80px;
+    padding-bottom: 0px;
 }
 `;
 
 const UltimosLancamentos = () => {
   return (
-    <Container className={styles.container}>
+    <Container>
       <Titulo
         cor="rgb(223, 185, 136)"
         tamanhoFonte="35px"
@@ -37,7 +37,7 @@ const UltimosLancamentos = () => {
         <NovosLivros src={livro.src} />
       ))}
     <CardRecomenda 
-        titulo="Talvez você se interesse por"
+        titulo="Talvez você se interesse por "
         subtitulo="Angular 11"
         descricao="Construindo uma aplicação com a plataforma Google"
         img={livro2 }
