@@ -3,6 +3,7 @@ import styles from './NavBar.module.css'
 import { BsBasket } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom';
 
 const Container = styled.div `
     display: flex;
@@ -22,6 +23,10 @@ const Lista = styled.li`
   padding: 0 5px;
   cursor: pointer;
   min-width: 120px;
+
+  .ativo {
+    background-color: red;
+  }
 `
 
 const LogoContainer = styled.div `
@@ -30,14 +35,17 @@ const LogoContainer = styled.div `
 
 
 const NavBar = () => {
-    const textoOpcoes = ['CATEGORIAS', 'MINHA ESTANTE', 'FAVORITOS'] 
+    const textoOpcoes = ['CATEGORIAS', 'ESTANTE', 'FAVORITOS'] 
 
   return (
         <Container>
         <Nav>
             {textoOpcoes.map((texto) => (
                 <Lista> 
+                   <NavLink to={ `/${texto.toLowerCase()}` } className={({isActive}) => isActive ? "ativo" : ""} >
                     <p>{texto} </p> 
+                    
+                    </NavLink> 
                 </Lista>
         ))}
         </Nav>
