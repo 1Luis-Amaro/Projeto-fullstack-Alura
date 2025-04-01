@@ -36,11 +36,23 @@ const getLivro = (req, res) => {
 };
 
 const postLivro = (req, res) => {
-  try {
+    try {
+    const id = req.body.id;
     const livroNovo = req.body;
-    insereLivro(livroNovo);
-    res.status(201);
-    res.send("Livro inserido com sucesso");
+    const livros = getTodosLivros()
+    if (!req.body.nome) {
+      return res.status(422).send("O campo nome é obrigatório")
+    }
+    
+    const idExistente = livros.some(livro => livro.id ===id)  
+    if(idExistente) {
+        return res.status(422).send("Esse ID já existe")
+    }else{
+      insereLivro(livroNovo)
+      res.status(201)
+      res.send("Livro inserido com sucesso")
+    }
+
   } catch (error) {
     res.status(500);
     res.send(error.message);
@@ -73,9 +85,9 @@ const deleteLivro = (req, res) => {
     if (id && Number(id)) {
       excluirLivro(id);
       res.send("Item excluido com sucesso");
-    }else {
-        res.status(422)
-        res.send("ID Inválido")
+    } else {
+      res.status(422);
+      res.send("ID Inválido");
     }
   } catch (error) {
     res.status(500);
