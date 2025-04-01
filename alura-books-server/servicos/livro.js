@@ -30,9 +30,19 @@ const modificaLivro = (modificacoes, id) =>  {
     fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais))
 }
 
+const excluirLivro = (id) => {
+    let livrosAtuais = JSON.parse(fs.readFileSync("livros.json")) 
+    const indiceModificado = livrosAtuais.filter(livro => livro.id !== id)
+
+
+    fs.writeFileSync("livros.json", JSON.stringify(indiceModificado))
+
+}
+
 module.exports = {
     getTodosLivros,
     getLivroPorId,
     insereLivro,
-    modificaLivro
+    modificaLivro,
+    excluirLivro
 }
