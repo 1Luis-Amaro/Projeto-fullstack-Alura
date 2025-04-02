@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Input from "../Input/Input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { livros } from "./DadosPesquisas";
+import { getLivros } from "../../servicos/livro";
 
 const PesquisaContainer = styled.section`
   background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
@@ -53,6 +54,12 @@ const Livro = styled.div`
 
 const Pesquisa = () => {
   const [livrosPesquisados, setLivrosPesquisados] = useState([]);
+  const [livros, setLivros] = useState([])
+
+  useEffect(() => {
+    const livrosDaApi = getLivros()
+    setLivros(livrosDaApi)
+  },[])
 
   return (
     <PesquisaContainer>

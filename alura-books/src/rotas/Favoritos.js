@@ -17,7 +17,6 @@ function Favoritos() {
   return (
     <AppContainer>
       <Pesquisa/>
-      
     </AppContainer>
   );
 }

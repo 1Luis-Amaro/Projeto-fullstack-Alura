@@ -10,9 +10,9 @@ const Container = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 10px;
   gap: 10px; /* Espaço entre os livros */
-  padding-bottom: 30px
+  padding-bottom: 30px;
+  margin-top: 10%
 `;
 
 const NovosLivros = styled.img`
