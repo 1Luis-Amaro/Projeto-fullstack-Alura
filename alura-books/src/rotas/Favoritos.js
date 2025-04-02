@@ -1,8 +1,8 @@
 
-import { Header } from './componentes/Header/Header';
+import { Header } from '../componentes/Header/Header';
 import styled from 'styled-components'
-import Pesquisa from './componentes/Pesquisa/Pesquisa';
-import UltimosLancamentos from './componentes/UltimosLancamentos/UltimosLancamentos';
+import Pesquisa from '../componentes/Pesquisa/Pesquisa';
+import UltimosLancamentos from '../componentes/UltimosLancamentos/UltimosLancamentos';
 
 //compoenentizando o css
 const AppContainer = styled.div`
@@ -13,14 +13,13 @@ const AppContainer = styled.div`
     
 `
 
-function App() {
+function Favoritos() {
   return (
     <AppContainer>
-      <Header/>
       <Pesquisa/>
-      <UltimosLancamentos/>
+      
     </AppContainer>
   );
 }
 
-export default App;
+export default Favoritos;

@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const Container = styled.div `
     display: flex;
+    
 `
 
 const Nav = styled.ul `
@@ -24,9 +25,20 @@ const Lista = styled.li`
   cursor: pointer;
   min-width: 120px;
 
+a {
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transição suave */
+  } 
+
   .ativo {
-    background-color: red;
-  }
+  border-radius: 10px;
+  background-color: black;
+  padding: 2px 15px;
+  color: #fff;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Transição mais lenta */
+
+}
 `
 
 const LogoContainer = styled.div `
@@ -42,7 +54,7 @@ const NavBar = () => {
         <Nav>
             {textoOpcoes.map((texto) => (
                 <Lista> 
-                   <NavLink to={ `/${texto.toLowerCase()}` } className={({isActive}) => isActive ? "ativo" : ""} >
+                   <NavLink to={ `/${texto.toLowerCase()}` } className={({isActive}) => isActive ? "ativo" : "inativo"} >
                     <p>{texto} </p> 
                     
                     </NavLink> 

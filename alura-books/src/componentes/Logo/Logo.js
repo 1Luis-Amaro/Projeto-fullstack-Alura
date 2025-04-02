@@ -7,6 +7,10 @@ import styled from "styled-components";
 const LogoContainer = styled.div`
   display: flex;
   font-size: 2em;
+
+  a {  
+     text-decoration: none;
+   }
 `;
 
 const LogoImg = styled.img`
