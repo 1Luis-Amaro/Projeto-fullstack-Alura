@@ -13,12 +13,11 @@ const  deletaFavoritoPorId = (id) => {
 }
 
 const insereLivroFavorito = (id) => {
-    let livros = JSON.parse(fs.readFileSync("livros.json"))
-    let favoritos = JSON.parse(fs.readFileSync("favoritos.json"))
-    
-    const livroInserido = livros.find(livro => livro.id === id)
-    const novaListaDeLivrosFavoritos = [...favoritos, livroInserido]
+    const livros = JSON.parse( fs.readFileSync("livros.json") )
+    const favoritos = JSON.parse( fs.readFileSync("favoritos.json") )
 
+    const livroInserido = livros.find( livro => livro.id === id)
+    const novaListaDeLivrosFavoritos = [...favoritos, livroInserido]
     fs.writeFileSync("favoritos.json", JSON.stringify(novaListaDeLivrosFavoritos))
 }
 

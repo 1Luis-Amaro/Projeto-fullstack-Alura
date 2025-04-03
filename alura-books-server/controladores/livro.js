@@ -6,7 +6,6 @@ const {
   excluirLivro,
 } = require("../servicos/livro");
 
-fs = require("fs");
 
 const getLivros = (req, res) => {
   try {
