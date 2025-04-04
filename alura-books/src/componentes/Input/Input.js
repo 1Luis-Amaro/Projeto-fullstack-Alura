@@ -10,10 +10,18 @@ const Input = styled.input `
         color: #FFF;
         font-size: 16px;
         margin-bottom: 10px;
+        
+        
 
         &::placeholder {
                 color: #FFF;
                 font-size: 16px;
+                text-align: center:
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                
+}
 `
 
 export default Input

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { deleteFavorito, getFavoritos } from "../servicos/favorito";
 import livros from "../imagens/livro.png";
-import styles from "./favorito.module.css";
+import { FaRegTrashAlt } from "react-icons/fa";
+
 
 //compoenentizando o css
 const AppContainer = styled.div`
@@ -68,6 +69,17 @@ const ContainerFav = styled.div`
   }
 `;
 
+const  TrashIcon = styled(FaRegTrashAlt) `
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  
+
+  &:hover {
+    color: red;
+  }
+`
+
 function Favoritos() {
   const [favoritos, setFavoritos] = useState();
 
@@ -92,9 +104,10 @@ function Favoritos() {
       <Livros>
         {favoritos &&
           favoritos.map((favorito) => (
-            <ContainerFav key={favorito.id} onClick={() => deletarFavorito(favorito.id)} >
+            <ContainerFav key={favorito.id} >
               <img src={livros} alt="" />
               <p>{favorito.nome}</p>
+              <TrashIcon onClick={() => deletarFavorito(favorito.id)} />
             </ContainerFav>
           ))}
       </Livros>

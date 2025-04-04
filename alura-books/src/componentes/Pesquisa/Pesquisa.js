@@ -84,9 +84,9 @@ const Pesquisa = () => {
   return (
     <PesquisaContainer>
       <Titulo> Já sabe por onde começar? </Titulo>
-      <Subtitulo>Encontre seu livro em nossa estante</Subtitulo>
+      <Subtitulo>Encontre seu livro em nossa estante, e caso goste de algum adicione aos seus favoritos!!</Subtitulo>
       <Input
-        placeholder="Escreva sua próxima leitura"
+        placeholder="Pesquise um Livro"
         onChange={(e) => {
           const textoDigitado = e.target.value;
           if (textoDigitado === "") {

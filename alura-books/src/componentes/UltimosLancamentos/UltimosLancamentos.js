@@ -1,6 +1,6 @@
 import React from "react";
 import { livros } from "./DadosUltimosLancamentos";
-import  livro2 from '../../imagens/livro2.png'
+import  livro2 from '../../imagens/download.png'
 import { Titulo } from "../Titulo/Titulo";
 import styled from "styled-components";
 import CardRecomenda from "../CardRecomenda/CardRecomenda";

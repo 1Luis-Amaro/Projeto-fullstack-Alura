@@ -33,12 +33,13 @@ const CardRecomenda = ({ titulo, subtitulo, descricao, img }) => {
     justify-content: end;
 
     img {
-    width: 12vw;
+    width: 9vw;
+    cursor:pointer;
 }
 
     button {
     height: 5vh;
-    width: 12vw;
+    width: 9vw;
     display: flex;
     font-size: 20px;
     color: #fff;
