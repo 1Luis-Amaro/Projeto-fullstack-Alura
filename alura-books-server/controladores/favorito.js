@@ -1,6 +1,7 @@
 const {
   getTodosFavoritos,
   insereLivroFavorito,
+  deletaFavoritoPorId,
 } = require("../servicos/favorito");
 
 const getFavoritos = (req, res) => {
@@ -20,11 +21,12 @@ const postFavorito = (req, res) => {
     const idExistente = livros.some((livro) => livro.id === id);
     if (idExistente) {
       return res.status(422).send("Esse ID já existe");
-    } 
+    } else {
+        insereLivroFavorito(id);
+        res.status(201);
+          res.send("Livro inserido com sucesso");
+    }
     
-      insereLivroFavorito(id);
-      res.status(201);
-      res.send("Livro inserido com sucesso");
   } catch (error) {
     res.status(500);
     res.send(error.message);

@@ -3,6 +3,8 @@ import Input from "../Input/Input";
 import { useState, useEffect } from "react";
 import { livros } from "./DadosPesquisas";
 import { getLivros } from "../../servicos/livro";
+import { postFavorito } from "../../servicos/favorito";
+import livru from "../../imagens/livro.png";
 
 const PesquisaContainer = styled.section`
   background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
@@ -29,7 +31,7 @@ const Subtitulo = styled.h3`
 /* Flexbox para organizar os livros horizontalmente */
 const ResultadoContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;  /* Faz os itens quebrarem para a próxima linha */
+  flex-wrap: wrap; /* Faz os itens quebrarem para a próxima linha */
   justify-content: center;
   gap: 20px; /* Espaçamento entre os itens */
   margin-top: 20px;
@@ -54,16 +56,30 @@ const Livro = styled.div`
 
 const Pesquisa = () => {
   const [livrosPesquisados, setLivrosPesquisados] = useState([]);
-  const [livros, setLivros] = useState([])
+  const [livros, setLivros] = useState([]);
 
   useEffect(() => {
-    fetchLivros()
-  },[])
+    fetchLivros();
+  }, []);
 
   const fetchLivros = async () => {
-    const livrosDaApi = await getLivros()
-    setLivros(livrosDaApi)
-  }
+    const livrosDaApi = await getLivros();
+    setLivros(livrosDaApi);
+  };
+
+  const insertFavorito = async (id) => {
+    try {
+      await postFavorito(id);
+      alert("Livro adicionado aos favoritos!");
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        alert("Este livro já está nos favoritos!");
+      } else {
+        console.error("Erro ao adicionar favorito:", error);
+        alert("Ocorreu um erro ao adicionar o livro aos favoritos.");
+      }
+    }
+  };
 
   return (
     <PesquisaContainer>
@@ -73,24 +89,24 @@ const Pesquisa = () => {
         placeholder="Escreva sua próxima leitura"
         onChange={(e) => {
           const textoDigitado = e.target.value;
-          if (textoDigitado === "" ) {
-            setLivrosPesquisados([])
-          }else {
-
-              const resultadoPesquisa = livros.filter((livro) =>
-                livro.nome.toLowerCase().includes(textoDigitado.toLowerCase())
-              );
-              setLivrosPesquisados(resultadoPesquisa);
-            }
+          if (textoDigitado === "") {
+            setLivrosPesquisados([]);
+          } else {
+            const resultadoPesquisa = livros.filter((livro) =>
+              livro.nome.toLowerCase().includes(textoDigitado.toLowerCase())
+            );
+            setLivrosPesquisados(resultadoPesquisa);
+          }
         }}
       />
-      
+
       {/* Exibe os resultados somente se houver livros pesquisados */}
       {livrosPesquisados.length > 0 && (
         <ResultadoContainer>
           {livrosPesquisados.map((livro) => (
-            <Livro key={livro.nome}>
-              <img src={livro.src} alt={livro.nome} />
+            <Livro key={livro.id} onClick={() => insertFavorito(livro.id)}>
+              <img src={livru} alt={livro.nome} />
+              {console.log(livrosPesquisados)}
               <p>{livro.nome}</p>
             </Livro>
           ))}

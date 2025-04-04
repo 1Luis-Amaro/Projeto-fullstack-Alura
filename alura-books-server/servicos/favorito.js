@@ -7,7 +7,7 @@ const getTodosFavoritos = () => {
 
 const  deletaFavoritoPorId = (id) => {
     let livrosFavoritos = JSON.parse(fs.readFileSync("favoritos.json"))
-    const deleteLivro = livrosFavoritos.filter(livros => livros.id !== id)
+    const deleteLivro = livrosFavoritos.filter(livros => Number(livros.id) !== Number(id))
     fs.writeFileSync("favoritos.json", JSON.stringify(deleteLivro))
     
 }
