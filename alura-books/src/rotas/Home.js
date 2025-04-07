@@ -10,6 +10,7 @@ const AppContainer = styled.div`
     min-height: 100vh;
     background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
     overflow: auto;
+    padding-top: 60px;
     
 `
 

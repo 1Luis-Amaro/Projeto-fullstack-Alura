@@ -11,14 +11,14 @@ const Container = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px; /* Espaço entre os livros */
-  padding-bottom: 30px;
-  margin-top: 10%
+  padding-bottom: 100px;
+  margin-top: 20%
 `;
 
 const NovosLivros = styled.img`
     padding-top: 30px;
-    width: 230px;
-    height: auto;
+    width: 16vw;
+    height: 100%;
     text-align: center;
     padding-bottom: 0px;
 }

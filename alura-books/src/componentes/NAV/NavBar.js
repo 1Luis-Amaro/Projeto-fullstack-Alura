@@ -1,77 +1,88 @@
-import React from 'react'
-import styles from './NavBar.module.css'
+import React from 'react';
 import { BsBasket } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
+import Logo from '../Logo/Logo';
+import styles from './NavBar.module.css';
 
-const Container = styled.div `
-    display: flex;
-    
-`
+const Container = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+box-shadow: 5px 3px 5px black;
 
-const Nav = styled.ul `
-    display: flex;
-`
+`;
+
+const Nav = styled.ul`
+  display: flex;
+  gap: 20px;
+  list-style: none;
+`;
 
 const Lista = styled.li`
-    font-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  padding: 0 5px;
-  cursor: pointer;
-  min-width: 120px;
+  font-size: 16px;
 
-a {
+  a {
     text-decoration: none;
     color: black;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transição suave */
-  } 
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
 
-  .ativo {
-  border-radius: 10px;
-  background-color: black;
-  padding: 2px 15px;
-  color: #fff;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Transição mais lenta */
+  a.ativo {
+    background-color: black;
+    color: white;
+  }
+`;
 
-}
-`
+const Icones = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
-const LogoContainer = styled.div `
-    padding: 35px;
-`
-
+  svg {
+    font-size: 24px;
+    cursor: pointer;
+    color: #002f52;
+  }
+`;
 
 const NavBar = () => {
-    const textoOpcoes = ['CATEGORIAS', 'ESTANTE', 'FAVORITOS'] 
+  const textoOpcoes = ['CATEGORIAS', 'ESTANTE', 'FAVORITOS'];
 
   return (
-        <Container>
-        <Nav>
-            {textoOpcoes.map((texto) => (
-                <Lista> 
-                   <NavLink to={ `/${texto.toLowerCase()}` } className={({isActive}) => isActive ? "ativo" : "inativo"} >
-                    <p>{texto} </p> 
-                    
-                    </NavLink> 
-                </Lista>
+    <Container>
+      <Link to={``}  >  
+      <Logo />
+      </Link> 
+      <Nav>
+        {textoOpcoes.map((texto, index) => (
+          <Lista key={index}>
+            <NavLink
+              to={`/${texto.toLowerCase()}`}
+              className={({ isActive }) => (isActive ? 'ativo' : '')}
+            >
+              {texto}
+            </NavLink>
+          </Lista>
         ))}
-        </Nav>
-        <LogoContainer >  
-                <FaRegUserCircle className={styles.logo}  />
-                <BsBasket className={styles.logo} />
-        </LogoContainer>
-        
-        </Container>
+      </Nav>
 
-    
-        
-    
-  )
-}
+      <Icones>
+        <FaRegUserCircle className={styles.logo} />
+        <BsBasket className={styles.logo} />
+      </Icones>
+    </Container>
+  );
+};
 
-export default NavBar
+export default NavBar;
