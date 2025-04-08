@@ -17,7 +17,7 @@ const Container = styled.div`
   align-items: center;
   padding: 0 40px;
   z-index: 1000;
-box-shadow: 5px 3px 5px black;
+  box-shadow: 5px 3px 5px black;
 
 `;
 

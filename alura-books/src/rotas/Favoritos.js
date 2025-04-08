@@ -8,15 +8,10 @@ import { FaRegTrashAlt } from "react-icons/fa";
 //compoenentizando o css
 const AppContainer = styled.div`
     min-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    padding-top: 60px;
     background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
-    overflow: auto;
-    flex-wrap: wrap; /* Permite que os itens quebrem linha caso não caibam */
-    justify-content: center;
-    align-items: center;
-    
-    
-    
+     
     p {
       display: flex;
       align-items: center ;
@@ -27,12 +22,13 @@ const AppContainer = styled.div`
     }
 
     h1 {
-      padding-top: 50px;
+      padding-top: 70px;
       padding-bottom: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      font-size: 40px;
       color: #fff;
       width:100px
       height:10000px
@@ -41,32 +37,26 @@ const AppContainer = styled.div`
 `;
 const Livros = styled.div`
   display: flex;
+  justify-content: flex-start; /* <-- Alinha tudo ao início da linha */
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 50px; /* Espaçamento entre os itens */
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  
+
+  
 `;
 
 const ContainerFav = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 5px; /* Espaçamento entre imagem e nome */
-  padding: 10px; /* Adiciona um espaçamento interno */
+  transition: all 0.3s ease;
+    padding-top: 50px;
 
-  /* Aplica a borda ao passar o mouse no bloco inteiro */
-  &:hover {
-    border: 3px solid #fff;
+    &:hover {
+    border: 2px solid #fff;
     border-radius: 10px;
-    transition: border 0.3s ease-in-out;
-  }
-  img {
-    width: 10vw;
-    height: auto;
-    border-radius: 5px;
-  }
+    padding: 10px;
 `;
 
 const  TrashIcon = styled(FaRegTrashAlt) `
@@ -100,7 +90,7 @@ function Favoritos() {
 
   return (
     <AppContainer>
-      <h1>Aqui estão seus livros favoritos:</h1>
+      <h1>Aqui estão seus livros favoritos</h1>
       <Livros>
         {favoritos &&
           favoritos.map((favorito) => (

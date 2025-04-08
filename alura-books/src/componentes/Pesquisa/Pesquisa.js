@@ -12,7 +12,7 @@ const PesquisaContainer = styled.section`
   background-image: linear-gradient(90deg, #002f52 35%, #326589 165%);
   color: #fff;
   text-align: center;
-  padding: 85px 0;
+  padding: 20px 0;
   height: 270px;
   width: 100%;
 `;
@@ -107,7 +107,7 @@ const Pesquisa = () => {
   return (
     <PesquisaContainer>
       <Titulo> Já sabe por onde começar? </Titulo>
-      <Subtitulo>Encontre seu livro em nossa estante, e caso goste de algum adicione aos seus favoritos!!</Subtitulo>
+      <Subtitulo>Encontre seu livro, e caso goste de algum adicione aos seus favoritos!!</Subtitulo>
       <Input
         placeholder="Pesquise um Livro"
         onChange={(e) => {
@@ -127,11 +127,11 @@ const Pesquisa = () => {
       {livrosPesquisados.length > 0 && (
         <ResultadoContainer>
           {livrosPesquisados.map((livro) => (
-            <Livro key={livro.id} onClick={() => insertFavorito(livro.id)}>
+            <Livro key={livro.id}>
               <img src={livru} alt={livro.nome} />
               {console.log(livrosPesquisados)}
               <p>{livro.nome}</p>
-              <Add/>
+              <Add onClick={() => insertFavorito(livro.id)} />
             </Livro>
           ))}
         </ResultadoContainer>
